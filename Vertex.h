@@ -22,19 +22,19 @@ struct vertex
     real x=0.0;
     real y=0.0;
     int verNum=0;
-    /*
-    vertex(real xh_= 0.0, real yh_=0.0){
+
+    /*vertex(real xh_= 0.0, real yh_=0.0)
+    {
         x= xh_;
         y= yh_;
-}*/
+    }*/
 
 };
 
 
 struct face
 {
-
-        size_t v1,v2,v3;
+    size_t v1,v2,v3;
 };
 
 

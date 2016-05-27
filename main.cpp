@@ -8,7 +8,11 @@ using std::vector;
 
 #include "initialisation.h"
 #include "Vertex.h"
-#define fileName "example.txt"
+
+#include"matrix_generator.h"
+
+//#include"Colsamm.h"
+//using namespace ::_COLSAMM_;
 
 
 typedef double real;
@@ -16,8 +20,8 @@ typedef double real;
 
 int main(){
 
-    Initialisation i;
-    i.process();
+    Matrix_Generator M;
+    M.generate();
 
  return 0;
 }
