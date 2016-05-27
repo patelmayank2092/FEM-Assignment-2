@@ -6,13 +6,13 @@ using std::cout;using std::cin;using std::endl;
 using std::vector;
 
 
-#include "triangular.h"
+#include "initialisation.h"
 #include "Vertex.h"
 #define fileName "example.txt"
 
 
 typedef double real;
-typedef int intg;
+
 
 int main(){
 

@@ -1,6 +1,6 @@
 
-#ifndef TRIANGULAR_H
-#define TRIANGULAR_H
+#ifndef INITIALISATION_H
+#define INITIALISATION_H
 
 #include "type.h"
 
@@ -21,7 +21,7 @@ using std::vector;
 #include <cmath>
 
 typedef double real;
-typedef int intg;
+
 
 class Initialisation{
 
@@ -42,4 +42,4 @@ class Initialisation{
     void k_waveNumber(void);
 };
 
-#endif  // TRIANGULAR_H
+#endif  // INITIALISATION_H

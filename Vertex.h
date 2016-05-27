@@ -34,7 +34,7 @@ struct vertex
 struct face
 {
 
-        vector<vertex> v1,v2,v3;
+        size_t v1,v2,v3;
 };
 
 

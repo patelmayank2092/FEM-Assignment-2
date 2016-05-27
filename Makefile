@@ -1,14 +1,14 @@
 
-all: triangle main solve
+all:	main initialisation	solve
 
-solve: triangle.o main.o 
-	g++ -o3 -std=c++11 triangle.o main.o -o solve
+solve:	initialisation.o	main.o
+	g++ -O3 -std=c++11 initialisation.o main.o -o solve
 
-triangle: triangular.h triangular.cpp
-	g++ -c -o3 -std=c++11 triangular.cpp -o triangle.o
+initialisation:   initialisation.h initialisation.cpp
+	g++ -c -O3 -std=c++11 initialisation.cpp -o initialisation.o
 
-main: type.h Vertex.h main.cpp
-	g++ -c -o3 -std=c++11 main.cpp -o main.o
+main:   type.h  Vertex.h    main.cpp
+	g++ -c -O3 -std=c++11 main.cpp -o main.o
 
 
 clean:
