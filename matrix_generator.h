@@ -7,8 +7,10 @@ using std::cout;using std::cin;using std::endl;
 #include<vector>
 using std::vector;
 
-//#include"Colsamm.h"
-//using namespace ::_COLSAMM_;
+#include <cmath>
+
+#include<string>
+using std::string;
 
 #include"Vertex.h"
 #include"initialisation.h"
@@ -18,7 +20,9 @@ class Matrix_Generator
    public:
     Matrix_Generator();
 
-    //ELEMENTS::Triangle my_element;
+    std::vector<std::vector<double> > Laplacian_Stencil ;
+    std::vector<std::vector<double> > Helmholtz_Stencil ;
+
     vector< std::vector< double > > my_local_matrix;
     vector<double> corners;
 
