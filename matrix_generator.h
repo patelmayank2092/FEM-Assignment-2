@@ -12,6 +12,9 @@ using std::vector;
 #include<string>
 using std::string;
 
+#include<map>
+using std::map;
+
 #include"Vertex.h"
 #include"initialisation.h"
 
@@ -20,10 +23,16 @@ class Matrix_Generator
    public:
     Matrix_Generator();
 
-    std::vector<std::vector<double> > Laplacian_Stencil ;
-    std::vector<std::vector<double> > Helmholtz_Stencil ;
+    vector<vector<double>> Laplacian_Stencil ;
+    vector<vector<double>> Helmholtz_Stencil ;
 
-    vector< std::vector< double > > my_local_matrix;
+    vector<vector<double>> my_local_stiffness_matrix;
+    vector<vector<double>> my_local_mass_matrix;
+
+    vector<map<int,double>> global_stiffness_matrix;
+    vector<map<int,double>> global_mass_matrix;
+
+
     vector<double> corners;
 
     Initialisation i;
