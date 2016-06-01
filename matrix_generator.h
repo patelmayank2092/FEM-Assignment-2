@@ -15,6 +15,9 @@ using std::string;
 #include<map>
 using std::map;
 
+#include<fstream>
+using std::ifstream;using std::ofstream;
+
 #include"Vertex.h"
 #include"initialisation.h"
 
@@ -32,11 +35,14 @@ class Matrix_Generator
     vector<map<int,double>> global_stiffness_matrix;
     vector<map<int,double>> global_mass_matrix;
 
-
     vector<double> corners;
 
     Initialisation i;
     void local_stiffness_matrix(face f);
+
+    void print_stiffness_matrix();
+
+     void print_mass_matrix();
 
     void generate();
 };

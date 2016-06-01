@@ -53,13 +53,13 @@ void Matrix_Generator::local_stiffness_matrix(face f)
         }
    }
 
-   cout<< "Local stiffness Matrix" << endl;
+   /*cout<< "Local stiffness Matrix" << endl;
    for(auto i = my_local_stiffness_matrix.begin(); i < my_local_stiffness_matrix.end(); ++i)
    {
        for(auto j = i->begin(); j< i->end() ; ++j)
            cout<< *j << '\t';
    cout<<endl;
-   }
+   }*/
 
    my_local_mass_matrix = my_element.integrate(v_() * w_());
 
@@ -79,10 +79,12 @@ void Matrix_Generator::local_stiffness_matrix(face f)
    global_stiffness_matrix[f.v2][f.v3] += my_local_stiffness_matrix[1][2];
    global_stiffness_matrix[f.v3][f.v2] += my_local_stiffness_matrix[2][1];
 
+   /*
    cout<< "\nGlobal stiffness matrix" << endl;
    cout<< "row " << f.v1 << " columns " << endl;
    cout << f.v1 << '\t' << '\t' << f.v2 << '\t'<< '\t' << f.v3 << endl;
    cout << global_stiffness_matrix[f.v1][f.v1] << '\t' <<  global_stiffness_matrix[f.v1][f.v2] << '\t' << global_stiffness_matrix[f.v1][f.v3] <<endl;
+   */
 
    global_mass_matrix.resize(1039);
 
@@ -97,26 +99,65 @@ void Matrix_Generator::local_stiffness_matrix(face f)
    global_mass_matrix[f.v2][f.v3] +=  my_local_mass_matrix[1][2];
    global_mass_matrix[f.v3][f.v2] +=  my_local_mass_matrix[2][1];
 
-   cout<< "\nGlobal mass matrix" << endl;
+   /*cout<< "\nGlobal mass matrix" << endl;
    cout<< "row " << f.v1 << " columns " << endl;
    cout << f.v1 << '\t' << '\t' << f.v2 << '\t'<< '\t' << f.v3 << endl;
    cout << global_mass_matrix[f.v1][f.v1] << '\t' <<  global_mass_matrix[f.v1][f.v2] << '\t' << global_mass_matrix[f.v1][f.v3] <<endl;
-
+   */
 }
+
+void Matrix_Generator::print_stiffness_matrix()
+{
+
+      ofstream file_A("A.txt");
+      if(file_A.is_open())
+      {
+      for(size_t i=0;i<1039;i++)
+        for(size_t j=0;j<1039;j++)
+        {
+        if(global_stiffness_matrix[i][j]!=0)
+            file_A<<i<<"\t"<< j<<"\t"<<global_stiffness_matrix[i][j]<<"\n";
+        }
+      }
+    else {cout<<"unable to open file"<<endl;}
+
+file_A.close();
+}
+
+void Matrix_Generator::print_mass_matrix()
+{
+
+      ofstream file_M("M.txt");
+      if(file_M.is_open())
+      {
+      for(size_t i=0;i<1039;i++)
+        for(size_t j=0;j<1039;j++)
+        {
+        if(global_mass_matrix[i][j]!=0)
+        file_M<<i<<"\t"<< j<<"\t"<<global_mass_matrix[i][j]<<"\n";
+        }
+      }
+    else {cout<<"unable to open file"<<endl;}
+
+file_M.close();
+}
+
 
 void Matrix_Generator::generate()
 {
     i.process();
-    int count =0;
-        for(auto iter=i.F.begin();iter<i.F.end();++iter)
+    //int count =0;
+    for(auto iter=i.F.begin();iter<i.F.end();++iter)
         {
 
-            if(count<2)
-            {
-            local_stiffness_matrix(*iter); ++count;
-            }
-            else
-                break;
+            //if(count<2)
+           // {
+            local_stiffness_matrix(*iter); //++count;
+           // }
+           // else
+             //   break;
         }
+    print_stiffness_matrix();
+    print_mass_matrix();
 
 }
