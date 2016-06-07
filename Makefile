@@ -13,7 +13,7 @@ all:	main initialisation
 initialisation:   initialisation.h initialisation.cpp
 	g++ $(CFLAG) initialisation.cpp -o initialisation.o
 
-main:   type.h  Vertex.h initialisation.h matrix_generator.h $(CDIR)*.h main.cpp
+main:   type.h  Vertex.h initialisation.h matrix_generator.h  $(CDIR)*.h main.cpp
 	g++ $(FFLAG) initialisation.cpp matrix_generator.cpp main.cpp -o result
 
 #matrix_generator: matrix_generator.h matrix_generator.cpp 

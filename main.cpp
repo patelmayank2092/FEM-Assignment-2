@@ -11,6 +11,8 @@ using std::vector;
 
 #include"matrix_generator.h"
 
+
+
 //#include"Colsamm.h"
 //using namespace ::_COLSAMM_;
 
@@ -18,10 +20,15 @@ using std::vector;
 typedef double real;
 
 
-int main(){
+int main(int argc, char *argv[]){
+
+
+    real delta = std::stod(argv[1]);
+    long double eph= std::stold(argv[2]);
 
     Matrix_Generator M;
     M.generate();
+    M.CGprocess(eph);
 
  return 0;
 }
